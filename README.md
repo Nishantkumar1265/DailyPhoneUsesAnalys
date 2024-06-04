@@ -1,8 +1,10 @@
+# Dataset loading
 import pandas as pd
 data = pd.read_csv('/content/Nishant dataset.csv')
+# head
 data.head()
 
-
+# data describe
 data.describe()
 
 
