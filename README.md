@@ -8,21 +8,21 @@ data.head()
 data.describe()
 
 
-#convert the 'Date column to a datatime type
+# convert the 'Date column to a datatime type
 data['Date'] = pd.to_datetime(data['Date'])
 
-#Set the 'Date column as the index
+# Set the 'Date column as the index
 data.set_index('Date', inplace=True)
 data
 
 import matplotlib.pyplot as plt
-#create a line plot
+# create a line plot
 plt.plot(data.index,data['PhoneUsesINhours'])
-#add label and title
+# add label and title
 plt.xlabel('Date')
 plt.ylabel('PhoneUsesINhours')
 plt.title('Daily Phone Uses Time Data')
-#display the plot
+# display the plot
 plt.show()
 
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -55,7 +55,7 @@ plt.show()
 
 
 from statsmodels.graphics.tsaplots import plot_acf,plot_pacf
-#plot ACF
+# plot ACF
 plt.figure(figsize=(10,4))
 plot_acf(data['PhoneUsesINhours'], lags=50)
 plt.xlabel('Lag')
@@ -63,7 +63,7 @@ plt.ylabel('Autocorrelation')
 plt.title('Autocorrelation Function(ACF)')
 plt.show()
 
-#plot PACF
+# plot PACF
 plt.figure(figsize=(10,4))
 plot_pacf(data['PhoneUsesINhours'], lags=50)
 plt.xlabel('Lag')
@@ -77,7 +77,7 @@ adf_statistic = result[0]
 p_value=result[1]
 print(f'ADF Statistic: {adf_statistic:.4f}')
 print(f'p_value: {p_value:.4f}')
-#define a function to interpret the test results
+# define a function to interpret the test results
 def interpret_adf_results(p_value):
   if p_value < 0.05: #compared to 5% error
     print('The time series is stationary')
